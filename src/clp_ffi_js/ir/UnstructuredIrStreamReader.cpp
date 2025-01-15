@@ -158,6 +158,12 @@ auto UnstructuredIrStreamReader::decode_range(size_t begin_idx, size_t end_idx, 
     );
 }
 
+auto UnstructuredIrStreamReader::get_log_event_idx_by_timestamp(
+        clp::ir::epoch_time_ms_t const timestamp
+) -> LogEventIdxTsType {
+    return generic_get_log_event_idx_by_timestamp(m_encoded_log_events, timestamp);
+}
+
 UnstructuredIrStreamReader::UnstructuredIrStreamReader(
         StreamReaderDataContext<UnstructuredIrDeserializer>&& stream_reader_data_context
 )

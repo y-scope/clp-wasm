@@ -71,6 +71,9 @@ public:
     [[nodiscard]] auto decode_range(size_t begin_idx, size_t end_idx, bool use_filter) const
             -> DecodedResultsTsType override;
 
+    [[nodiscard]] auto get_log_event_idx_by_timestamp(clp::ir::epoch_time_ms_t timestamp
+    ) -> LogEventIdxTsType override;
+
 private:
     // Constructor
     explicit UnstructuredIrStreamReader(

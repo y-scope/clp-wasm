@@ -11,6 +11,7 @@
 #include <clp/Array.hpp>
 #include <clp/ErrorCode.hpp>
 #include <clp/ffi/ir_stream/Deserializer.hpp>
+#include <clp/ir/types.hpp>
 #include <clp/TraceableException.hpp>
 #include <emscripten/val.h>
 #include <spdlog/spdlog.h>
@@ -145,6 +146,12 @@ auto StructuredIrStreamReader::decode_range(size_t begin_idx, size_t end_idx, bo
             log_event_to_string,
             use_filter
     );
+}
+
+auto StructuredIrStreamReader::get_log_event_idx_by_timestamp(
+        clp::ir::epoch_time_ms_t const timestamp
+) -> LogEventIdxTsType {
+    return generic_get_log_event_idx_by_timestamp(*m_deserialized_log_events, timestamp);
 }
 
 StructuredIrStreamReader::StructuredIrStreamReader(

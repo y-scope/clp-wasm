@@ -11,23 +11,23 @@ namespace clp_ffi_js {
  * Enum of known log levels.
  */
 enum class LogLevel : std::uint8_t {
-    NONE = 0,  // This isn't a valid log level.
-    TRACE,
-    DEBUG,
-    INFO,
-    WARN,
-    ERROR,
-    FATAL,
-    LENGTH,  // This isn't a valid log level.
+    LogLevelNone = 0,  // This isn't a valid log level.
+    Trace,
+    Debug,
+    Info,
+    Warn,
+    Error,
+    Fatal,
+    LogLevelLength,
 };
-constexpr LogLevel cValidLogLevelsBeginIdx{LogLevel::TRACE};
+constexpr LogLevel cValidLogLevelsBeginIdx{LogLevel::Trace};
 
 /**
  * Strings corresponding to `LogLevel`.
  *
  * NOTE: These must be kept in sync manually.
  */
-constexpr std::array<std::string_view, clp::enum_to_underlying_type(LogLevel::LENGTH)>
+constexpr std::array<std::string_view, clp::enum_to_underlying_type(LogLevel::LogLevelLength)>
         cLogLevelNames{
                 "NONE",  // This isn't a valid log level.
                 "TRACE",

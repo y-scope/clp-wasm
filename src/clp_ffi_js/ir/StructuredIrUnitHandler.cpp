@@ -28,7 +28,7 @@ namespace {
  * Parses a string to determine the corresponding `LogLevel` enum value.
  * @param str
  * @return `LogLevel` enum corresponding to `str` if `str` matches a string in `cLogLevelNames`.
- * @return `LogLevel::NONE` otherwise.
+ * @return `LogLevel::LogLevelNone` otherwise.
  */
 auto parse_log_level(std::string_view str) -> LogLevel;
 
@@ -48,7 +48,7 @@ auto parse_log_level(std::string_view str) -> LogLevel {
             log_level_name_upper_case
     );
     if (it == cLogLevelNames.end()) {
-        return LogLevel::NONE;
+        return LogLevel::LogLevelNone;
     }
 
     return static_cast<LogLevel>(std::distance(cLogLevelNames.begin(), it));
@@ -96,7 +96,7 @@ auto StructuredIrUnitHandler::handle_end_of_stream() -> clp::ffi::ir_stream::IRE
 auto StructuredIrUnitHandler::get_log_level(
         StructuredLogEvent::NodeIdValuePairs const& id_value_pairs
 ) const -> LogLevel {
-    LogLevel log_level{LogLevel::NONE};
+    LogLevel log_level{LogLevel::LogLevelNone};
 
     if (false == m_log_level_node_id.has_value()) {
         return log_level;
@@ -113,7 +113,7 @@ auto StructuredIrUnitHandler::get_log_level(
     } else if (log_level_value.is<clp::ffi::value_int_t>()) {
         auto const& log_level_int = log_level_value.get_immutable_view<clp::ffi::value_int_t>();
         if (log_level_int >= clp::enum_to_underlying_type(cValidLogLevelsBeginIdx)
-            && log_level_int < clp::enum_to_underlying_type(LogLevel::LENGTH))
+            && log_level_int < clp::enum_to_underlying_type(LogLevel::LogLevelLength))
         {
             log_level = static_cast<LogLevel>(log_level_int);
         }

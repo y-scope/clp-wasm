@@ -107,7 +107,7 @@ auto UnstructuredIrStreamReader::deserialize_stream() -> size_t {
 
         auto const& logtype = message.get_logtype();
         constexpr size_t cLogLevelPositionInMessages{1};
-        LogLevel log_level{LogLevel::NONE};
+        LogLevel log_level{LogLevel::LogLevelNone};
         if (logtype.length() > cLogLevelPositionInMessages) {
             // NOLINTNEXTLINE(readability-qualified-auto)
             auto const log_level_name_it{std::find_if(

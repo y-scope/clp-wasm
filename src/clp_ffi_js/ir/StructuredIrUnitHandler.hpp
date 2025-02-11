@@ -82,8 +82,8 @@ private:
     // Methods
     /**
      * @param id_value_pairs
-     * @return `LogLevel::NONE` if `m_log_level_node_id` is unset, the node has no value, or the
-     * node's value is not an integer or string.
+     * @return `LogLevel::LogLevelNone` if `m_log_level_node_id` is unset, the node has no value, or
+     * the node's value is not an integer or string.
      * @return `LogLevel` from node with id `m_log_level_node_id` otherwise.
      */
     [[nodiscard]] auto get_log_level(StructuredLogEvent::NodeIdValuePairs const& id_value_pairs

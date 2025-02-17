@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 include(FetchContent)
 
+set(FETCHCONTENT_QUIET OFF)
+
 if(NOT CMAKE_TOOLCHAIN_FILE)
     set(CMAKE_TOOLCHAIN_FILE
         "${CMAKE_CURRENT_SOURCE_DIR}/build/emsdk/upstream/emscripten/cmake/Modules/Platform/\
